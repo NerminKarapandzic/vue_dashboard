@@ -6,7 +6,7 @@
       <v-layout row wrap>
           <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
               <v-card class="ma-3 text-center">
-                  <v-avatar class="mt-4" size="100px" color="red" >
+                  <v-avatar class="mt-4" size="100px" >
                       <img :src="person.avatar" alt="alt" style="border-radius:50%;">
                   </v-avatar>
                   <v-card-text>

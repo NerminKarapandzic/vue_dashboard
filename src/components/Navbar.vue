@@ -6,6 +6,21 @@
 				App title
 			</v-toolbar-title>
 			<v-spacer />
+
+            <v-menu offset-y>
+                <template v-slot:activator="{ on }">
+                <v-btn text color="grey" v-on="on" >
+                    <v-icon left>expand_more</v-icon>
+                    <span>Menu</span>
+                </v-btn>
+                </template>
+                <v-list>
+                <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
+                    <v-list-item-title>{{ link.text }}</v-list-item-title>
+                </v-list-item>
+                </v-list>
+            </v-menu>
+
 			<v-btn text color="grey darken-3">
 				<v-icon left>exit_to_app</v-icon>
 				<span>Sign out</span>
@@ -18,8 +33,11 @@
                     <v-avatar size="100"  >
                         <img src="/avatar.jpg" alt="alt" style="border-radius:50%;">
                     </v-avatar>
+                    <p class="text-center white--text mt-2 subtitle-1">Nermin Karapandzic</p>
                 </v-flex>
-                <p class="text-center white--text mt-2 subtitle-1">Nermin Karapandzic</p>
+                <v-flex class="mb-5">
+                    <Dialog />
+                </v-flex>
             </v-layout>
 			<v-list>
 				<v-list-item v-for="link in links" :key="link.text" router  :to="link.route">
@@ -36,7 +54,9 @@
 </template>
 
 <script>
+import Dialog from './Dialog.vue'
 export default {
+    components: { Dialog },
 	data() {
 		return {
 			drawer: false,
